@@ -20,5 +20,11 @@ function update(){
     countDays.innerText = diffDays
 }
 
+function send(){
+    let textSay = document.getElementById("say").value
+    let savedMessage = document.getElementById("saved-message")
+    savedMessage.textContent += textSay + "\n"
+}
+
 
 
