@@ -1,0 +1,101 @@
+
+body {
+    background-image: url("tml_brasil.jpg");
+    background-size: cover;
+    height: 1500px;
+    font-family: "Aboreto", system-ui;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#title{
+    background: #161a16;
+    text-shadow: 0px 0px 10px #ffffff; 
+    padding: 5px 10px;
+    border-radius: 10px;        
+}
+
+#count-days{
+    background-color: #161a16;
+    padding: 5px 10px;
+    width: 100px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    width: 90px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#now-btn {
+    background: darkred;
+}
+
+#send-btn {
+    background: darkgreen;
+    width: 56px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #161a16;
+  width: 100px;
+  margin: 5px auto;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+input {
+  margin: 10px auto;
+  width: 300px;
+  height: 50px;
+  display: block;
+}
+
+#message{
+    background: #161a16;
+    width: 200px;
+    margin: 50px auto;
+    padding: 5px 10px; 
+    border-radius: 10px;   
+}
+
+#saved-message{
+    display: flex; 
+    flex-direction: column;
+    background-color: #161a16;
+    width: 500px;
+    height: 500px;
+    margin-top: 10x;
+    padding: 10px 10px;
+    font-size: small;    
+}
