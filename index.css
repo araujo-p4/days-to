@@ -1,6 +1,5 @@
-
 body {
-    background-image: url("tml_brasil.jpg");
+    background-image: url("/images/tml_brasil.jpg");
     background-size: cover;
     height: 1500px;
     font-family: "Aboreto", system-ui;
@@ -10,6 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: #ffffff;
+    min-width: 900px;
 }
 
 h1 {
@@ -44,23 +44,22 @@ button {
     padding-bottom: 10px;
     color: white;
     font-weight: bold;
-    width: 90px;
+    background-color: darkgreen;
     margin-bottom: 5px;
     border-radius: 5px;
+    padding: 10px 25px;
 }
 
 #now-btn {
     background: darkred;
 }
 
-#send-btn {
+#send-el {
     background: darkgreen;
-    width: 56px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    margin: 0px auto;
+}
+
+#delete-el {
+    background: darkgray;
 }
 
 label{
@@ -84,7 +83,7 @@ input {
 #message{
     background: #161a16;
     width: 200px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 5px 10px; 
     border-radius: 10px;   
 }
@@ -92,10 +91,17 @@ input {
 #saved-message{
     display: flex; 
     flex-direction: column;
+    align-items: flex-start;
+    list-style-type: none;
     background-color: #161a16;
     width: 500px;
     height: 500px;
-    margin-top: 10x;
-    padding: 10px 10px;
-    font-size: small;    
+    font-size: small;
+    padding: 10px 30px;
+    text-align: justify;
+
+}
+
+#mes{
+    margin-top: 10px;
 }

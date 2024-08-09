@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
@@ -11,13 +12,15 @@
             <h2 id="count-days">0</h2>
             <button id="now-btn" onclick="update()">UPDATE</button>
             <p id="message"> Who is anxious for?</p>           
-            <script src="index.js"></script>
         </div>
         <div class="write">
             <label>Message</label>
-            <input type="text" id="say" placeholder="Write a message"></input>
-            <button id="send-btn" onclick="send()">SEND</button>
+            <input type="text" id="say" placeholder="Write a message">
+            <button id="send-el">SEND</button>
+            <button id="delete-el">DELETE MESSAGES</button>
         <div>
-            <p id="saved-message"> Saved messages: </p>     
+            <p id="message"> Saved Messages: </p>
+            <ul id="saved-message"></ul>     
     </body>
+    <script src="index.js"></script>
 </html>

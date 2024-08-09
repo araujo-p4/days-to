@@ -20,10 +20,40 @@ function update(){
     countDays.innerText = diffDays
 }
 
-function send(){
-    let textSay = document.getElementById("say").value
-    let savedMessage = document.getElementById("saved-message")
-    savedMessage.textContent += textSay + "\n"
+let myMessages = []
+
+let textSay = document.getElementById("say")
+let sendEl = document.getElementById("send-el")
+let deleteEl = document.getElementById("delete-el")
+let savedMessages = document.getElementById("saved-message")
+
+
+let messagesFromLocalStorage = JSON.parse(localStorage.getItem("myMessages"))
+if(messagesFromLocalStorage){
+    myMessages = messagesFromLocalStorage
+    renderMessages()
+}
+
+sendEl.addEventListener("click", function(){
+    if(textSay.value != ""){    
+        myMessages.push(textSay.value)
+    }
+    textSay.value = "" 
+    localStorage.setItem("myMessages", JSON.stringify(myMessages))    
+    renderMessages()   
+})
+
+deleteEl.addEventListener("click", function(){
+    localStorage.clear()
+})
+
+function renderMessages() {
+    let listMessages = ""
+    for (let i = 0; i < myMessages.length; i++) {
+        listMessages += `<li id="mes">${myMessages[i]}</li>`
+        console.log(myMessages[i])
+    }
+    savedMessages.innerHTML = listMessages 
 }
 
 
