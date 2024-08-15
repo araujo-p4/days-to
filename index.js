@@ -1,3 +1,16 @@
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"
+// import { getDatabase} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"
+
+// const firebaseConfig = {
+//     databaseURL: "https://days-left-288cb-default-rtdb.firebaseio.com/"
+// }
+
+// const app = initializeApp(firebaseConfig);
+// const database = getDatabase(app)
+// console.log(app)
+// console.log(database)
+
+
 function daysleft(firstDate, secondDate){
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay))
