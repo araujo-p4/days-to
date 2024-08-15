@@ -1,14 +1,17 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"
-// import { getDatabase} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"
+import { getDatabase,
+         ref,
+         push,
+         onValue,
+         remove } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"
 
-// const firebaseConfig = {
-//     databaseURL: "https://days-left-288cb-default-rtdb.firebaseio.com/"
-// }
+const firebaseConfig = {
+    databaseURL: process.env.DATABASE_URL
+}
 
-// const app = initializeApp(firebaseConfig);
-// const database = getDatabase(app)
-// console.log(app)
-// console.log(database)
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app)
+const referenceInDB = ref(database, "messages")
 
 
 function daysleft(firstDate, secondDate){
@@ -17,54 +20,51 @@ function daysleft(firstDate, secondDate){
     return diffDays
 }
 
-function update(){
-    var currentDate = new Date()
-    var year = currentDate.getFullYear()
-    var month = currentDate.getMonth()+1
-    var day = currentDate.getDate()
-    console.log(year)
-    console.log(month)
-    console.log(day)
+
+const textSay = document.getElementById("say")
+const sendEl = document.getElementById("send-el")
+const deleteEl = document.getElementById("delete-el")
+const savedMessages = document.getElementById("saved-message")
+const nowBtn = document.getElementById("now-btn")
+
+onValue(referenceInDB, function(snapshot){
+    const snapshotDoesExist = snapshot.exists()
+    if (snapshotDoesExist) {
+        let snapshotvalues = snapshot.val()
+        let message = Object.values(snapshotvalues)
+        renderMessages(message)
+    }    
+})
+
+nowBtn.addEventListener("click", function(){
+    let currentDate = new Date()
+    let year = currentDate.getFullYear()
+    let month = currentDate.getMonth()+1
+    let day = currentDate.getDate()
     const firstDate = new Date(year, month, day)
     const secondDate = new Date(2024, 10, 11)
     var diffDays
     diffDays = daysleft(firstDate, secondDate)
     let countDays = document.getElementById("count-days")
     countDays.innerText = diffDays
-}
-
-let myMessages = []
-
-let textSay = document.getElementById("say")
-let sendEl = document.getElementById("send-el")
-let deleteEl = document.getElementById("delete-el")
-let savedMessages = document.getElementById("saved-message")
-
-
-let messagesFromLocalStorage = JSON.parse(localStorage.getItem("myMessages"))
-if(messagesFromLocalStorage){
-    myMessages = messagesFromLocalStorage
-    renderMessages()
-}
+})
 
 sendEl.addEventListener("click", function(){
     if(textSay.value != ""){    
-        myMessages.push(textSay.value)
+        push(referenceInDB, textSay.value)
     }
     textSay.value = "" 
-    localStorage.setItem("myMessages", JSON.stringify(myMessages))    
-    renderMessages()   
 })
 
 deleteEl.addEventListener("click", function(){
-    localStorage.clear()
+    remove(referenceInDB)
+    savedMessages.innerHTML = ""
 })
 
-function renderMessages() {
+function renderMessages(myMessages) {
     let listMessages = ""
     for (let i = 0; i < myMessages.length; i++) {
         listMessages += `<li id="mes">${myMessages[i]}</li>`
-        console.log(myMessages[i])
     }
     savedMessages.innerHTML = listMessages 
 }
