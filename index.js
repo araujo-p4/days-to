@@ -6,7 +6,7 @@ import { getDatabase,
          remove } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"
 
 const firebaseConfig = {
-    databaseURL: process.env.DATABASE_URL
+    databaseURL: "https://days-left-288cb-default-rtdb.firebaseio.com"///process.env.DATABASE_URL
 }
 
 const app = initializeApp(firebaseConfig);
